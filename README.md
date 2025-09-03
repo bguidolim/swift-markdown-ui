@@ -30,15 +30,7 @@ You can use the built-in themes, create your own or override specific text and b
 
 ## Minimum requirements
 
-You can use MarkdownUI on the following platforms:
-
-- macOS 12.0+
-- iOS 15.0+
-- tvOS 15.0+
-- watchOS 8.0+
-
-Some features, like displaying tables or multi-image paragraphs, require macOS 13.0+, iOS 16.0+,
-tvOS 16.0+, and watchOS 9.0+.
+MarkdownUI supports iOS 16.0+ only.
 
 ## Getting started
 
@@ -288,3 +280,21 @@ Finally, add `import MarkdownUI` to your source code.
 1. Enter `https://github.com/gonzalezreal/swift-markdown-ui` into the
    *Search or Enter Package URL* search field
 1. Link **MarkdownUI** to your application target
+
+## Testing
+
+To run the test suite, you must use an **iPhone SE (3rd generation)** simulator running **iOS 18.1** due to snapshot testing requirements. The tests are designed to produce consistent visual results on this specific device configuration.
+
+Run tests using:
+
+```bash
+make test
+```
+
+Or directly with xcodebuild:
+
+```bash
+xcodebuild test \
+    -scheme MarkdownUI \
+    -destination platform="iOS Simulator,name=iPhone SE (3rd generation),OS=18.1"
+```

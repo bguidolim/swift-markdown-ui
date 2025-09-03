@@ -261,7 +261,7 @@ MarkdownUI comes with a few more tricks on the sleeve. You can explore the
 To use MarkdownUI in a Swift Package Manager project, add the following line to the dependencies in your `Package.swift` file:
 
 ```swift
-.package(url: "https://github.com/gonzalezreal/swift-markdown-ui", from: "2.0.2")
+.package(url: "https://github.com/bguidolim/swift-markdown-ui", from: "2.0.2")
 ```
 
 Include `"MarkdownUI"` as a dependency for your executable target:
@@ -277,9 +277,23 @@ Finally, add `import MarkdownUI` to your source code.
 ### Adding MarkdownUI to an Xcode project
 
 1. From the **File** menu, select **Add Packages…**
-1. Enter `https://github.com/gonzalezreal/swift-markdown-ui` into the
+1. Enter `https://github.com/bguidolim/swift-markdown-ui` into the
    *Search or Enter Package URL* search field
 1. Link **MarkdownUI** to your application target
+
+### Adding MarkdownUI using Carthage
+
+1. Add the following line to your `Cartfile`:
+
+```
+github "bguidolim/swift-markdown-ui"
+```
+
+2. Run `carthage update --platform iOS` to build the framework
+
+3. Drag the built `MarkdownUI.framework` from `Carthage/Build/iOS/` into your Xcode project
+
+4. Follow the remaining steps from [Carthage's README](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application) to add the framework to your application target
 
 ## Testing
 

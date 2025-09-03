@@ -1,0 +1,68 @@
+name: MarkdownUI
+options:
+  bundleIdPrefix: com.github.bguidolim
+  createIntermediateGroups: true
+  groupSortPosition: top
+  indentWidth: 2
+  tabWidth: 2
+  usesTabs: false
+
+settings:
+  DEVELOPMENT_TEAM: ""
+  IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+  SWIFT_VERSION: "5.9"
+  MARKETING_VERSION: "2.1.0"
+  CURRENT_PROJECT_VERSION: "1"
+
+packages:
+  swift-cmark:
+    url: https://github.com/swiftlang/swift-cmark
+    exactVersion: 0.6.0
+
+targets:
+  MarkdownUI:
+    type: framework
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: Sources/MarkdownUI
+        excludes:
+          - "**/*.md"
+    dependencies:
+      - package: swift-cmark
+        product: cmark-gfm
+      - package: swift-cmark
+        product: cmark-gfm-extensions
+    settings:
+      base:
+        BUILD_LIBRARY_FOR_DISTRIBUTION: YES
+        DYLIB_INSTALL_NAME_BASE: "@rpath"
+        INSTALL_PATH: "$(LOCAL_LIBRARY_DIR)/Frameworks"
+        SKIP_INSTALL: YES
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: ""
+        SUPPORTED_PLATFORMS: "iphoneos iphonesimulator"
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_INSTALL_OBJC_HEADER: NO
+        ENABLE_MODULE_VERIFIER: YES
+        MODULE_VERIFIER_SUPPORTED_LANGUAGES: "objective-c objective-c++"
+        MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS: "gnu17 gnu++20"
+        DEFINES_MODULE: NO
+
+schemes:
+  MarkdownUI:
+    build:
+      targets:
+        MarkdownUI: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

@@ -1,6 +1,6 @@
 import Foundation
-@_implementationOnly import cmark_gfm
-@_implementationOnly import cmark_gfm_extensions
+internal import cmark_gfm
+internal import cmark_gfm_extensions
 
 extension Array where Element == BlockNode {
   init(markdown: String) {
@@ -232,7 +232,9 @@ extension UnsafeNode {
     let parser = cmark_parser_new(CMARK_OPT_DEFAULT)
     defer { cmark_parser_free(parser) }
 
-    let extensionNames: Set<String> = ["autolink", "strikethrough", "tagfilter", "tasklist", "table"]
+    let extensionNames: Set<String> = [
+      "autolink", "strikethrough", "tagfilter", "tasklist", "table",
+    ]
 
     for extensionName in extensionNames {
       guard let syntaxExtension = cmark_find_syntax_extension(extensionName) else {
